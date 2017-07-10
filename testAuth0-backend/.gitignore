@@ -1,0 +1,5 @@
+/node_modules
+
+# auth urls
+/auth/conf.js
+
