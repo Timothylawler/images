@@ -45,7 +45,7 @@ export function requireAuth(nextState, replace) {
   }
 }
 
-function getUserProfile(){
+function getUserAuthProfile(){
   let accessToken = getAccessToken();
   return new Promise((resolve, reject) => {
     auth.client.userInfo(accessToken, (err, profile) => {
@@ -155,7 +155,7 @@ function sendToBackend(userId, accessToken){
 function getUserId(){
   return new Promise((resolve, reject) => {
     if(!localStorage.getItem(USER_ID_KEY)){
-      getUserProfile()
+      getUserAuthProfile()
         .then(res => resolve(localStorage.getItem(USER_ID_KEY)))
     }
     else {

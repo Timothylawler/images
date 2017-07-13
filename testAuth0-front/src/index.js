@@ -3,7 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { Router, Route, browserHistory } from 'react-router';
-import { SecondSection, Callback } from './components';
+import { 
+  SecondSection, 
+  Callback,
+  Profile 
+} from './components';
 import { requireAuth } from './utils';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -12,7 +16,8 @@ const Root = () => {
     <div className="">
       <Router history={browserHistory}>
         <Route path="/" component={App}>
-          <Route path="/second" component={SecondSection} onEnter={requireAuth}/>
+          <Route path="/second" component={SecondSection}/>
+          <Route path="/profile/:id" component={Profile} onEnter={requireAuth}/>
         </Route>
         <Route path="/callback" component={Callback} />
       </Router>

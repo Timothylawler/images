@@ -1,4 +1,4 @@
-export {ApiService} from './api-service.js';
+export {ApiService} from './api-service';
 export { 
   login, 
   logout, 
@@ -8,6 +8,9 @@ export {
   setIdToken,
   isLoggedIn,
   getIdToken,
-  getUserProfile,
+  getUserAuthProfile,
   postUserToBackend
-} from './AuthService.js';
+} from './AuthService';
+export {
+  getUser
+} from './user-service';

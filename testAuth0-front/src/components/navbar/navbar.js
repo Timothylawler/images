@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
-import { login, logout, isLoggedIn } from '../../utils';
-import './style.css'
+import { login, logout, isLoggedIn, getUser } from '../../utils';
+import './navbar.css'
 
 class Navbar extends Component {
 	showMenu = false;
 	constructor(props){
 		super(props)
+		this.state = {
+			isDropdownShowing: ""
+		}
 	}
 
 	first(){
@@ -20,6 +23,41 @@ class Navbar extends Component {
 	toggleMenu(){
 		this.showMenu = !this.showMenu;
 		console.log("toggling:", this.showMenu);
+	}
+
+	toggleDropdownMenu(){
+		let state = this.state.isDropdownShowing == ""? "show": "";
+		this.setState({
+			isDropdownShowing: state
+		})
+	}
+
+	goToProfile(){
+		console.log("Going to user");
+		getUser()
+			.then(res => {
+				console.log("USER:",res);
+				browserHistory.push(`/profile/${res.id}`);
+			})
+			.catch(error => {
+				console.log("Error navigating to user: ",error);
+			})
+	}
+
+	loggedInMenu(){
+		return (
+			<li className="loggedin-dropdown-menu">
+				<a onClick={()=> this.toggleDropdownMenu()}>Menu<span className="arrow">&rarr;</span></a>
+				<div className={'drop-down ' + this.state.isDropdownShowing}>
+					<span onClick={()=>this.goToProfile()}>
+						Profile
+					</span>
+					<span onClick={()=> logout()}>
+						Logout
+					</span>
+				</div>
+			</li>
+		);
 	}
 
   render() {
@@ -38,58 +76,19 @@ class Navbar extends Component {
 					<div className={"navbar-collapse " + (this.showMenu? 'show':'collapse')} >
 						<ul className="nav navbar-nav navbar-left" >
 							<li onClick={()=> this.first()}><a>First</a></li>
-							{
-								isLoggedIn()&&
-									<li onClick={()=>this.second()}><a>Second</a></li>								
-							}
+							<li onClick={()=>this.second()}><a>Second</a></li>								
 						</ul>
 						
 						<ul className="nav navbar-nav navbar-right">
 							{
 								isLoggedIn() ?
-									<li onClick={()=>logout()}><a>Logout</a></li>
+									this.loggedInMenu()
 									:<li onClick={()=>login()}><a>Login</a></li>
 							}
 						</ul>
 					</div>
 				</div>
 			</nav>
-      /*<nav classNameName="navbar">
-				<div className="brand" onClick={()=>this.first()}><span >asd</span></div>
-				<div className="menu-content"> 
-					<ul className="menu-items">
-						<li>
-							<button className="menu-item" onClick={()=>this.first()}>First</button>
-						</li>
-							{
-								isLoggedIn() &&
-								<li>
-									<button className="menu-item" onClick={()=>this.second()}>Second</button>
-								</li>
-							}
-					</ul>
-					<ul className="login-wrapper">
-						<li>
-							{
-								!isLoggedIn() &&
-									<button 
-										className="positive" 
-										onClick={()=>login()}
-									>Log In</button>
-							}
-						</li>
-						<li>
-							{
-								isLoggedIn() &&
-									<button 
-										className="negative"
-										onClick={()=>logout()}
-									>Log out</button>
-							}
-						</li>
-					</ul>
-				</div>
-      </nav>*/
     );
   }
 }

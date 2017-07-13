@@ -24,3 +24,7 @@ yarn.lock
 
 # Auth keys and settings
 /src/utils/conf.js
+
+
+#Ignore all regular css
+src/*.css
