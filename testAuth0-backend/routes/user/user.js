@@ -31,7 +31,7 @@ user.use(bodyParser.json(), cors());
  *  Enables checking which user is accessing the api
  */
 user.post("/", authCheck, (req, res) => {
-  console.log(req.body);
+  //console.log(req.body);
   //  let userId = req.body.userId;
   //  let sessionAccessToken = req.body.accessToken;
   res.end();
