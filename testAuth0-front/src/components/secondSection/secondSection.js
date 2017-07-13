@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { ApiService } from '../../utils';
 import { getUserProfile } from '../../utils';
+import { ImageThumb } from '../';
+
+//  Style
+import './secondSection.css';
 
 
 class SecondSection extends Component {
@@ -37,13 +41,13 @@ class SecondSection extends Component {
     return (
       <div className="first-section">
         <h2>SecondSection</h2>
-        {
-          second.map((item, index) => (
-            <div key={item.id} className="card">
-              <p>{item.text}</p>
-            </div>
-          ))
-        }
+        <div className="image-wrapper">
+          {
+            second.map((item, index) => (
+              <ImageThumb className="item" key={item.id} {...item} />
+            ))
+          }
+        </div>
       </div>
     );
   }

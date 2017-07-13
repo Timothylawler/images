@@ -10,11 +10,11 @@ class Navbar extends Component {
 	}
 
 	first(){
-			browserHistory.push("/");
+		browserHistory.push("/");
 	}
 
 	second(){
-			browserHistory.push("/second");
+		browserHistory.push("/second");
 	}
 
 	toggleMenu(){
@@ -36,8 +36,20 @@ class Navbar extends Component {
 						<a className="navbar-brand" href="#">Brand</a>
 					</div>
 					<div className={"navbar-collapse " + (this.showMenu? 'show':'collapse')} >
+						<ul className="nav navbar-nav navbar-left" >
+							<li onClick={()=> this.first()}><a>First</a></li>
+							{
+								isLoggedIn()&&
+									<li onClick={()=>this.second()}><a>Second</a></li>								
+							}
+						</ul>
+						
 						<ul className="nav navbar-nav navbar-right">
-							<li><a href="#">Link</a></li>
+							{
+								isLoggedIn() ?
+									<li onClick={()=>logout()}><a>Logout</a></li>
+									:<li onClick={()=>login()}><a>Login</a></li>
+							}
 						</ul>
 					</div>
 				</div>
