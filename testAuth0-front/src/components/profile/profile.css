@@ -1,0 +1,15 @@
+.profile .intro {
+  display: flex; }
+  .profile .intro .profile-image-wrapper {
+    width: 150px;
+    overflow: hidden; }
+    .profile .intro .profile-image-wrapper img {
+      border: 5px solid #fff;
+      height: 150px;
+      width: 150px; }
+  .profile .intro .intro-text {
+    width: calc(66.66% - 2em);
+    margin-left: 2em; }
+    .profile .intro .intro-text h1 {
+      text-transform: uppercase;
+      margin-top: 0; }

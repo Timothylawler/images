@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 //  Style
-import './image-thumb.css';
+import './imageThumb.css';
 
 class ImageThumb extends Component {
 
@@ -10,9 +10,16 @@ class ImageThumb extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className={this.props.className}>
-        <img className="image-thumb-image" src={this.props.image}/>
+        <div className="image-thumb">
+          <img className="image" src={this.props.image}/>
+          <div className="hover-content">
+            <h1>Title</h1>
+            <p>text text text text text text</p>
+          </div>
+        </div>
       </div>
     );
   }

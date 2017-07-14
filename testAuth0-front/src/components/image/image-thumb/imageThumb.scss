@@ -1,0 +1,43 @@
+.image-thumb{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+	background-color: #ddd;
+	border-radius: 2px;
+	
+	.image {
+
+		position: relative;
+		//height: calc(100%);
+		height: calc(100%);
+		overflow: hidden;
+		width: 100%;
+		border-radius: 2px;
+		transition: transform 200ms;
+	}
+
+	&:hover {
+		.image{
+			transform: scale(1.2);
+		}
+		.hover-content{
+			opacity: 1;
+		}
+	}
+
+	.hover-content {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		color: white;
+		text-align: center;
+		padding-top: 12px;
+		top: 0;
+		opacity: 0;
+		background-color: rgba(25, 25, 25, 0.5);
+		transition-delay: 3000ms;
+		transition: all 250ms;
+	}
+}

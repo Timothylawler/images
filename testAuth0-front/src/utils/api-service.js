@@ -61,6 +61,8 @@ class ApiService {
         userName: "Tika",
         name: "Timothy Lawler Karvonen",
         id: "asdasd",
+        bio: "Capturing colurful nature in south Africa. Making sure that every one sees the world as it is.",
+        profileImage: "https://dncache-mauganscorp.netdna-ssl.com/thumbseg/325/325435-bigthumbnail.jpg",
         content: {
           count: 4,
           images: [

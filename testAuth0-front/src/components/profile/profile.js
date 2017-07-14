@@ -29,9 +29,15 @@ class Profile extends Component {
     const { user } = this.state;
     return (
       <div className="profile">
-        {
-          user.userName
-        }
+        <div className="intro">
+          <div className="profile-image-wrapper">
+            <img src={user.profileImage}/>
+          </div>
+          <div className="intro-text">
+            <h1>{user.userName}</h1>
+            <p>{user.bio}</p>
+          </div>
+        </div>
       </div>
     );
   }

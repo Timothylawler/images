@@ -1,4 +1,28 @@
 
 .profile{
-  
+  .intro{
+    display: flex;
+    
+    .profile-image-wrapper {
+      width: 150px;
+      //border-radius: 50%;
+      overflow: hidden;
+      img {
+        border: 5px solid #fff;
+        height: 150px;
+        width: 150px;
+      }
+    }
+
+    .intro-text{
+      width: calc(66.66% - 2em);
+      margin-left: 2em;
+
+      h1 {
+        text-transform: uppercase;
+        margin-top: 0;
+      }
+      
+    }
+  }
 }

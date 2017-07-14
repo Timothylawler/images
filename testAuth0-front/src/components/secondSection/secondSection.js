@@ -37,9 +37,8 @@ class SecondSection extends Component {
   render() {
     const { second } = this.state;
 
-    
     return (
-      <div className="first-section">
+      <div className="second-section">
         <h2>SecondSection</h2>
         <div className="image-wrapper">
           {
