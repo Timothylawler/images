@@ -27,4 +27,4 @@ yarn.lock
 
 
 #Ignore all regular css
-src/*.css
+*.css

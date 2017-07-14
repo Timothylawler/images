@@ -109,7 +109,7 @@ export function setIdToken() {
 
 export function isLoggedIn() {
   const idToken = getIdToken();
-  console.log("IDTOKEN:", idToken)
+  //console.log("IDTOKEN:", idToken)
   if(idToken == null){
     return false;
   }

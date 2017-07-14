@@ -11,9 +11,19 @@ import {
 import { requireAuth } from './utils';
 import registerServiceWorker from './registerServiceWorker';
 
+/*  Redux */
+import {createStore, combineReducers} from 'redux';
+import {Provider, connect} from 'react-redux';
+import { 
+  navbarReducer
+} from './redux/reducers';
+const store = createStore(combineReducers({
+  navbarReducer,
+}));
+
 const Root = () => {
   return (
-    <div className="">
+    <Provider store={store}>
       <Router history={browserHistory}>
         <Route path="/" component={App}>
           <Route path="/second" component={SecondSection}/>
@@ -21,7 +31,7 @@ const Root = () => {
         </Route>
         <Route path="/callback" component={Callback} />
       </Router>
-    </div>
+    </Provider>
   )
 }
 

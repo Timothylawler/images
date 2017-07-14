@@ -3,13 +3,15 @@ import { browserHistory } from 'react-router';
 import { login, logout, isLoggedIn, getUser } from '../../utils';
 import './navbar.css'
 
-class Navbar extends Component {
+//	Redux
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import {showDropdown, hideDropdown} from '../../redux/actions';
+
+class NavbarComponent extends Component {
 	showMenu = false;
 	constructor(props){
 		super(props)
-		this.state = {
-			isDropdownShowing: ""
-		}
 	}
 
 	first(){
@@ -21,15 +23,17 @@ class Navbar extends Component {
 	}
 
 	toggleMenu(){
-		this.showMenu = !this.showMenu;
+		//this.showMenu = !this.showMenu;
 		console.log("toggling:", this.showMenu);
 	}
 
 	toggleDropdownMenu(){
-		let state = this.state.isDropdownShowing == ""? "show": "";
-		this.setState({
-			isDropdownShowing: state
-		})
+		if(this.props.navDropdown.isDropdownShowing === ""){
+			this.props.actions.showDropdown();
+		}
+		else {
+			this.props.actions.hideDropdown();
+		}
 	}
 
 	goToProfile(){
@@ -45,10 +49,11 @@ class Navbar extends Component {
 	}
 
 	loggedInMenu(){
+		const {navDropdown} = this.props;
 		return (
 			<li className="loggedin-dropdown-menu">
 				<a onClick={()=> this.toggleDropdownMenu()}>Menu<span className="arrow">&rarr;</span></a>
-				<div className={'drop-down ' + this.state.isDropdownShowing}>
+				<div className={'drop-down ' + navDropdown.isDropdownShowing}>
 					<span onClick={()=>this.goToProfile()}>
 						Profile
 					</span>
@@ -76,7 +81,7 @@ class Navbar extends Component {
 					<div className={"navbar-collapse " + (this.showMenu? 'show':'collapse')} >
 						<ul className="nav navbar-nav navbar-left" >
 							<li onClick={()=> this.first()}><a>First</a></li>
-							<li onClick={()=>this.second()}><a>Second</a></li>								
+							<li onClick={()=> this.second()}><a>Second</a></li>								
 						</ul>
 						
 						<ul className="nav navbar-nav navbar-right">
@@ -92,5 +97,11 @@ class Navbar extends Component {
     );
   }
 }
+
+const Navbar = connect(state => ({
+	navDropdown: state.navbarReducer
+}), dispatch => ({
+	actions: bindActionCreators({showDropdown, hideDropdown}, dispatch)
+}))( NavbarComponent );
 
 export { Navbar };
