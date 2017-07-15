@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getUser } from '../../utils';
+import { CardContainer } from '../';
 
 //	Redux
 import { connect } from 'react-redux';
@@ -34,19 +35,27 @@ class ProfileComponent extends Component {
 
   render() {
     const { user } = this.state;
+    console.log(user);
     return (
       <div className="container">
-        <div className="profile">
-          <div className="intro">
-            <div className="profile-image-wrapper">
-              <img src={user.profileImage}/>
+          <div className="profile">
+            <div className="intro">
+              <div className="profile-image-wrapper">
+                <img src={user.profileImage}/>
+              </div>
+              <div className="intro-text">
+                <h1>{user.userName}</h1>
+                <p>{user.bio}</p>
+              </div>
             </div>
-            <div className="intro-text">
-              <h1>{user.userName}</h1>
-              <p>{user.bio}</p>
+            <div className="images">
+              {
+                user.content?
+                <CardContainer data={user.content.images}/>
+                : "No image yet"
+              }
             </div>
           </div>
-        </div>
       </div>
     );
   }

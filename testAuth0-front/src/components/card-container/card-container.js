@@ -6,6 +6,7 @@ import './card-container.css';
 
 class CardContainer extends Component {
   render() {
+    console.log("CARDCONTAINER:", this.props);
     return (
       <div className="card-container">
         <div className="image-wrapper">

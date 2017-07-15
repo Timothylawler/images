@@ -4,7 +4,6 @@
     width: 150px;
     overflow: hidden; }
     .profile .intro .profile-image-wrapper img {
-      border: 5px solid #fff;
       height: 150px;
       width: 150px; }
   .profile .intro .intro-text {
@@ -13,3 +12,6 @@
     .profile .intro .intro-text h1 {
       text-transform: uppercase;
       margin-top: 0; }
+
+.profile .images {
+  margin-top: 24px; }

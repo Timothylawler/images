@@ -8,7 +8,6 @@
       //border-radius: 50%;
       overflow: hidden;
       img {
-        border: 5px solid #fff;
         height: 150px;
         width: 150px;
       }
@@ -24,5 +23,9 @@
       }
       
     }
+  }
+
+  .images{
+    margin-top: 24px;
   }
 }
