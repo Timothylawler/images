@@ -15,10 +15,14 @@ import registerServiceWorker from './registerServiceWorker';
 import {createStore, combineReducers} from 'redux';
 import {Provider, connect} from 'react-redux';
 import { 
-  navbarReducer
+  navbarReducer,
+  userReducer,
+  loadingSpinnerReducer
 } from './redux/reducers';
 const store = createStore(combineReducers({
   navbarReducer,
+  userReducer,
+  loadingSpinnerReducer
 }));
 
 const Root = () => {

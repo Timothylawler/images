@@ -28,14 +28,16 @@ class Profile extends Component {
   render() {
     const { user } = this.state;
     return (
-      <div className="profile">
-        <div className="intro">
-          <div className="profile-image-wrapper">
-            <img src={user.profileImage}/>
-          </div>
-          <div className="intro-text">
-            <h1>{user.userName}</h1>
-            <p>{user.bio}</p>
+      <div className="container">
+        <div className="profile">
+          <div className="intro">
+            <div className="profile-image-wrapper">
+              <img src={user.profileImage}/>
+            </div>
+            <div className="intro-text">
+              <h1>{user.userName}</h1>
+              <p>{user.bio}</p>
+            </div>
           </div>
         </div>
       </div>

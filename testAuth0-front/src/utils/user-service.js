@@ -1,28 +1,22 @@
 import { 
   ApiService
 } from './';
+
 /*  Constants */
 const USER_PROFILE = "USER_PROFILE";
 const apiService = new ApiService();
 
 export function getUser(){
   return new Promise((resolve, reject) => {
-    let user = getUserFromStorage();
-    if(user != null){
-      resolve(user);
-    } 
-    else{
-      apiService.getUserProfile()
-        .then(res => {
-          console.log("USER2",res);
-          setUser(res);
-          resolve(res);
-        })
-        .catch(error => {
-          //  TODO do something when we dont have a user...
-        })
-    }
-
+    apiService.getUserProfile()
+      .then(res => {
+        console.log("USER2",res);
+        setUser(res);
+        resolve(res);
+      })
+      .catch(error => {
+        //  TODO do something when we dont have a user...
+      })
   })
 }
 

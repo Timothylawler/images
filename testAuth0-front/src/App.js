@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {
   Start,
   Navbar,
-  FirstSection
+  FirstSection,
+  LoadingSpinner
 } from './components'
 import {Route} from 'react-router';
 import './App.css';
@@ -14,11 +15,12 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar/>
-        <div className="container">
+        <div className="">
           {
             this.props.children || <FirstSection/>
           }
         </div>
+        <LoadingSpinner />
       </div>
     );
   }

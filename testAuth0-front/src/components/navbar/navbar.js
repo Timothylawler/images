@@ -6,7 +6,11 @@ import './navbar.css'
 //	Redux
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {showDropdown, hideDropdown} from '../../redux/actions';
+import {
+	showDropdown, 
+	hideDropdown,
+	clearUser
+} from '../../redux/actions';
 
 class NavbarComponent extends Component {
 	showMenu = false;
@@ -48,6 +52,11 @@ class NavbarComponent extends Component {
 			})
 	}
 
+	logoutUser(){
+		this.props.actions.clearUser();
+		logout();
+	}
+
 	loggedInMenu(){
 		const {navDropdown} = this.props;
 		return (
@@ -57,7 +66,7 @@ class NavbarComponent extends Component {
 					<span onClick={()=>this.goToProfile()}>
 						Profile
 					</span>
-					<span onClick={()=> logout()}>
+					<span onClick={()=> this.logoutUser()}>
 						Logout
 					</span>
 				</div>
@@ -101,7 +110,7 @@ class NavbarComponent extends Component {
 const Navbar = connect(state => ({
 	navDropdown: state.navbarReducer
 }), dispatch => ({
-	actions: bindActionCreators({showDropdown, hideDropdown}, dispatch)
+	actions: bindActionCreators({showDropdown, hideDropdown, clearUser}, dispatch)
 }))( NavbarComponent );
 
 export { Navbar };

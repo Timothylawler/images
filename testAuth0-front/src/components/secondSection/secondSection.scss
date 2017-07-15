@@ -1,4 +1,4 @@
-.image-wrapper > .item {
+/*.image-wrapper > .item {
     margin-bottom: 12px;
 }
 
@@ -14,7 +14,7 @@
             max-height: 250px;
 
             /*  3 Images per row */
-            @media screen and(max-width: 1023px){
+            /*@media screen and(max-width: 1023px){
                 width: calc(33.33% - 6px);
 
                 &:nth-child(1),
@@ -33,7 +33,7 @@
             }
 
             /*  4 Images per row */
-            @media (min-width: 1024px){
+            /*@media (min-width: 1024px){
                 width: calc(25% - 6px);
                 
                 &:nth-child(1),
@@ -57,5 +57,5 @@
 
 
     
-}
+}*/
 

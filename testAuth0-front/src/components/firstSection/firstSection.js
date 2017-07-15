@@ -32,15 +32,17 @@ class FirstSection extends Component {
     
     
     return (
-      <div className="first-section">
-        <h2>firstSection</h2>
-        {
-          first.map((item, index) => (
-            <div key={item.id} className="card">
-              <p>{item.text}</p>
-            </div>
-          ))
-        }
+      <div className="container">
+        <div className="first-section">
+          <h2>firstSection</h2>
+          {
+            first.map((item, index) => (
+              <div key={item.id} className="card">
+                <p>{item.text}</p>
+              </div>
+            ))
+          }
+        </div>
       </div>
     );
   }
