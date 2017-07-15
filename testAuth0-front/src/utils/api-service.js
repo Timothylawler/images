@@ -22,7 +22,7 @@ class ApiService {
 
   getSecondSection(data){
     return new Promise((resolve, reject) => {
-      let url = `${options.baseUrl}/api/second`;
+      let url = `${options.baseUrl}/api/image`;
       this.GET_AUTHORIZED(url, data)
         .then(res => {
           resolve(res.json());
@@ -32,6 +32,22 @@ class ApiService {
           reject(error);
         });
     });
+  }
+
+  /*  Image */
+  getImageDataById(imageId){
+    return new Promise((resolve, reject) => {
+      console.log("IMAGEID",imageId)
+      let url = `${options.baseUrl}/api/image/${imageId}`;
+      console.log("GETTING IMAGE AT URL: ", url);
+      this.GET_AUTHORIZED(url, imageId)
+        .then(res => {
+          resolve(res.json());
+        })
+        .catch(error => {
+          reject(error);
+        })
+    })
   }
 
   
@@ -103,19 +119,18 @@ class ApiService {
     })
   }
 
-  GET(url, data){
+  GET(url){
     let init = {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
       method: "GET",
-      body: data
     }
     return fetch(url, init);
   }
 
-  GET_AUTHORIZED(url, data){
+  GET_AUTHORIZED(url){
     let init = {
       headers: {
         'Accept': 'application/json',
@@ -123,7 +138,6 @@ class ApiService {
         'Authorization': `Bearer ${getAccessToken()}`
       },
       method: "GET",
-      body: data
     }
     return fetch(url, init);
   }

@@ -6,6 +6,10 @@
 	-moz-box-shadow: 0px 0px 6px 0px rgba(153,153,153,0.7);
 	box-shadow: 0px 0px 6px 0px rgba(153,153,153,0.7);
 	
+	&:focus{
+		outline: none;
+	}
+	
 	li{
 		cursor: pointer;
 		&:hover{

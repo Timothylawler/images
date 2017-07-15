@@ -16,11 +16,13 @@ import './imageThumb.css';
 class ImageThumbComponent extends Component {
 
   componentDidMount() {
+    
   }
 
   _onClick(){
-    this.props.actions.setCurrentImage(this.props.image);
-    browserHistory.push("/details");
+    console.log(this.props);
+    //this.props.actions.setCurrentImage({url:this.props.image, id: this.props.id});
+    browserHistory.push(`/details/${this.props.id}`);
     console.log("clicked");
   }
 
@@ -31,7 +33,7 @@ class ImageThumbComponent extends Component {
           <img className="image" src={this.props.image}/>
           <div className="hover-content">
             <h1>Title</h1>
-            <p>text text text text text text</p>
+            <p>{this.props.text}</p>
           </div>
         </div>
       </div>

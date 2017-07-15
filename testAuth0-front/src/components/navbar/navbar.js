@@ -41,9 +41,9 @@ class NavbarComponent extends Component {
 	}
 
 	goToProfile(){
-		console.log("Going to user");
 		getUser()
 			.then(res => {
+				this.toggleDropdownMenu();
 				console.log("USER:",res);
 				browserHistory.push(`/profile/${res.id}`);
 			})
@@ -53,6 +53,7 @@ class NavbarComponent extends Component {
 	}
 
 	logoutUser(){
+		this.props.actions.hideDropdown();
 		this.props.actions.clearUser();
 		logout();
 	}
@@ -76,7 +77,7 @@ class NavbarComponent extends Component {
 
   render() {
     return (
-			<nav className="navbar navbar-default">
+			<nav className="navbar navbar-default" tabIndex="0" onBlur={this.props.actions.hideDropdown}>
 				<div className="container">
 					<div className="navbar-header">
 						<button type="button" className="navbar-toggle collapsed" onClick={()=>this.toggleMenu()}>

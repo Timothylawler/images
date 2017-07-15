@@ -5,6 +5,8 @@
   -webkit-box-shadow: 0px 0px 6px 0px rgba(153, 153, 153, 0.7);
   -moz-box-shadow: 0px 0px 6px 0px rgba(153, 153, 153, 0.7);
   box-shadow: 0px 0px 6px 0px rgba(153, 153, 153, 0.7); }
+  .navbar:focus {
+    outline: none; }
   .navbar li {
     cursor: pointer; }
     .navbar li:hover {

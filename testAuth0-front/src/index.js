@@ -34,7 +34,7 @@ const Root = () => {
       <Router history={browserHistory}>
         <Route path="/" component={App}>
           <Route path="/second" component={SecondSection}/>
-          <Route path="/details" component={ImageDetails} />
+          <Route path="/details/:id" component={ImageDetails} />
           <Route path="/profile/:id" component={Profile} onEnter={requireAuth}/>
         </Route>
         <Route path="/callback" component={Callback} />
