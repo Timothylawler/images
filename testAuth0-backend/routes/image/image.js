@@ -4,17 +4,29 @@ const cors = require("cors");
 
 const authCheck = require('../../auth');
 
-const second = express.Router();
-second.use(bodyParser.urlencoded({
+const image = express.Router();
+image.use(bodyParser.urlencoded({
     extended: true
 }));
-second.use(bodyParser.json(), cors());
+image.use(bodyParser.json(), cors());
 
-second.get("/", authCheck, (req, res) => {
+/*  GET ALL */
+image.get("/", authCheck, (req, res) => {
     res.end(JSON.stringify(data));
 });
+image.get("/:id", (req, res) => {
+    let image = data.filter((item, index) => {
+        return item.id == req.params.id;
+    });
+    if(image){
+        res.end(JSON.stringify(image[0]));
+    }
+    else {
+        res.status(404).send();
+    }
+});
 
-module.exports = second;
+module.exports = image;
 
 let data = [
     {

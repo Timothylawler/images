@@ -1,6 +1,6 @@
 /*  Routes */
 const first = require('./first/first');
-const second = require('./second/second')
+const image = require('./image/image')
 const user = require('./user/user');
 
 
@@ -9,7 +9,7 @@ const api = express.Router();
 
 /*  Endpoints */
 api.use("/first", first);
-api.use("/second", second);
+api.use("/image", image);
 api.use("/user", user);
 
 
