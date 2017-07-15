@@ -15,10 +15,8 @@
   text-align: center;
   top: 50%;
   left: 50%;
-  color: #222;
+  color: #eee;
   padding-top: 64px;
-  background-color: #eee;
-  border-radius: 15px;
   .ball1,
   .ball2,
   .ball3,
@@ -26,7 +24,7 @@
   .ball5 {
     width: 6px;
     height: 30px;
-    background-color: #222;
+    background-color: #eee;
     margin: 2.5px;
     display: inline-block;
     -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;

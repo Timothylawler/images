@@ -6,7 +6,8 @@ import { Router, Route, browserHistory } from 'react-router';
 import { 
   SecondSection, 
   Callback,
-  Profile 
+  Profile,
+  ImageDetails
 } from './components';
 import { requireAuth } from './utils';
 import registerServiceWorker from './registerServiceWorker';
@@ -17,12 +18,14 @@ import {Provider, connect} from 'react-redux';
 import { 
   navbarReducer,
   userReducer,
-  loadingSpinnerReducer
+  loadingSpinnerReducer,
+  currentImageReducer
 } from './redux/reducers';
 const store = createStore(combineReducers({
   navbarReducer,
   userReducer,
-  loadingSpinnerReducer
+  loadingSpinnerReducer,
+  currentImageReducer
 }));
 
 const Root = () => {
@@ -31,6 +34,7 @@ const Root = () => {
       <Router history={browserHistory}>
         <Route path="/" component={App}>
           <Route path="/second" component={SecondSection}/>
+          <Route path="/details" component={ImageDetails} />
           <Route path="/profile/:id" component={Profile} onEnter={requireAuth}/>
         </Route>
         <Route path="/callback" component={Callback} />

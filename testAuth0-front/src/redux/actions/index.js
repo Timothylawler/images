@@ -32,3 +32,14 @@ export {
   showSpinner,
   hideSpinner
 } from './loading-spinner-actions';
+
+/*  Current image action consts */
+export {
+  SET_CURRENT_IMAGE,
+  CLEAR_CURRENT_IMAGE
+} from './image-actions';
+/*  Current image actions */
+export {
+  setCurrentImage,
+  clearCurrentImage
+} from './image-actions';

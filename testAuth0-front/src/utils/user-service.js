@@ -12,7 +12,8 @@ export function getUser(){
       .then(res => {
         console.log("USER2",res);
         setUser(res);
-        resolve(res);
+        setTimeout(()=>resolve(res), 1000);
+        //resolve(res);
       })
       .catch(error => {
         //  TODO do something when we dont have a user...

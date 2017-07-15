@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { getUser } from '../../utils';
 
+//	Redux
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import {showSpinner, hideSpinner} from '../../redux/actions';
+
 //  Style
 import './profile.css';
 
-class Profile extends Component {
+class ProfileComponent extends Component {
 
   constructor(props){
     super(props);
@@ -14,14 +19,16 @@ class Profile extends Component {
   }
 
   componentDidMount() {
+    this.props.actions.showSpinner("getting profile");
     getUser()
       .then(res => {
         this.setState({
           user: res
         })
+        this.props.actions.hideSpinner();
       })
       .catch(error => {
-
+        this.props.actions.hideSpinner();
       })
   }
 
@@ -45,4 +52,10 @@ class Profile extends Component {
   }
 }
 
+
+const Profile = connect(state => ({
+
+}), dispatch => ({
+  	actions: bindActionCreators({showSpinner, hideSpinner}, dispatch)
+}))(ProfileComponent);
 export { Profile };
