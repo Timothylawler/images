@@ -3,3 +3,6 @@
 # auth urls
 /auth/conf.js
 
+# log files
+*.log
+
