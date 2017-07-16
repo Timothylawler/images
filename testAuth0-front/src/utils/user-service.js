@@ -8,22 +8,30 @@ const apiService = new ApiService();
 
 export function getUser(){
   return new Promise((resolve, reject) => {
-    apiService.getUserProfile()
-      .then(res => {
-        console.log("USER2",res);
-        setUser(res);
-        setTimeout(()=>resolve(res), 1000);
-        //resolve(res);
-      })
-      .catch(error => {
-        //  TODO do something when we dont have a user...
-      })
+    let user = getUserFromStorage();
+    if(user){
+      resolve(user);
+    } else {
+      apiService.getUserProfile()
+        .then(res => {
+          console.log("USER2", res);
+          setUser(res);
+          resolve(res);
+        })
+        .catch(error => {
+          //  TODO do something when we dont have a user...
+        })
+    }
   })
 }
 
 function setUser(user){
   localStorage.setItem(USER_PROFILE, JSON.stringify(user));
   return user;
+}
+
+export function clearUserFromStorage(){
+  localStorage.setItem(USER_PROFILE, null);
 }
 
 function getUserFromStorage(){

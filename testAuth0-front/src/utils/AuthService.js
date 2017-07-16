@@ -1,7 +1,7 @@
 import decode from 'jwt-decode';
 import { browserHistory } from 'react-router';
 import auth0 from 'auth0-js';
-import { ApiService } from './';
+import { ApiService, clearUserFromStorage } from './';
 import { 
   AUDIENCE, 
   CLIENT_DOMAIN, 
@@ -35,7 +35,8 @@ export function login() {
 export function logout() {
   clearIdToken();
   clearAccessToken();
-  clearUserId()
+  clearUserId();
+  clearUserFromStorage();
   browserHistory.push('/');
 }
 

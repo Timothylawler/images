@@ -9,7 +9,8 @@ import { bindActionCreators } from 'redux';
 import {
 	showDropdown, 
 	hideDropdown,
-	clearUser
+	showSpinner,
+	hideSpinner
 } from '../../redux/actions';
 
 class NavbarComponent extends Component {
@@ -41,20 +42,22 @@ class NavbarComponent extends Component {
 	}
 
 	goToProfile(){
+		this.props.actions.showSpinner();
 		getUser()
 			.then(res => {
 				this.toggleDropdownMenu();
 				console.log("USER:",res);
+				this.props.actions.hideSpinner();
 				browserHistory.push(`/profile/${res.id}`);
 			})
 			.catch(error => {
+				this.props.actions.hideSpinner();				
 				console.log("Error navigating to user: ",error);
 			})
 	}
 
 	logoutUser(){
 		this.props.actions.hideDropdown();
-		this.props.actions.clearUser();
 		logout();
 	}
 
@@ -111,7 +114,7 @@ class NavbarComponent extends Component {
 const Navbar = connect(state => ({
 	navDropdown: state.navbarReducer
 }), dispatch => ({
-	actions: bindActionCreators({showDropdown, hideDropdown, clearUser}, dispatch)
+	actions: bindActionCreators({showDropdown, hideDropdown, showSpinner, hideSpinner}, dispatch)
 }))( NavbarComponent );
 
 export { Navbar };

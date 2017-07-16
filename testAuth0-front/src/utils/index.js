@@ -12,5 +12,6 @@ export {
   postUserToBackend
 } from './AuthService';
 export {
-  getUser
+  getUser,
+  clearUserFromStorage
 } from './user-service';

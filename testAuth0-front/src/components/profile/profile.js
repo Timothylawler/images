@@ -20,8 +20,10 @@ class ProfileComponent extends Component {
   }
 
   componentDidMount() {
+    let profileId = this.props.params.id;
+
     this.props.actions.showSpinner("getting profile");
-    getUser()
+    getUser(profileId)
       .then(res => {
         this.setState({
           user: res
