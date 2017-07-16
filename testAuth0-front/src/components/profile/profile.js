@@ -51,6 +51,8 @@ class ProfileComponent extends Component {
               </div>
             </div>
             <div className="images">
+              <h2>Your gallery</h2>
+              <span>+</span>
               {
                 user.content?
                 <CardContainer data={user.content.images}/>

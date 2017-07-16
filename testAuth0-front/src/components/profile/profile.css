@@ -14,4 +14,25 @@
       margin-top: 0; }
 
 .profile .images {
-  margin-top: 24px; }
+  margin-top: 36px;
+  position: relative; }
+  .profile .images h2 {
+    display: inline-block;
+    margin-top: 0;
+    line-height: 1; }
+  .profile .images span {
+    display: inline-block;
+    right: 0;
+    top: -20px;
+    position: absolute;
+    padding: 0px 22px;
+    color: white;
+    font-weight: bold;
+    font-size: 48px;
+    text-shadow: 0.5px 0.5px #444;
+    border-radius: 100%; }
+    @media (min-width: 475px) {
+      .profile .images span {
+        right: 24px; } }
+  .profile .images div {
+    margin-top: 12px; }
